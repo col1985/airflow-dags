@@ -13,7 +13,6 @@ with DAG(
     'test_dag_v1',
     default_args=default_args,
     description='A simple DAG to test git-sync and execution',
-    schedule_interval=None, # Manual trigger for testing
     start_date=datetime(2023, 1, 1),
     catchup=False,
     tags=['testing'],
