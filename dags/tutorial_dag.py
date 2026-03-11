@@ -31,7 +31,7 @@ with DAG(
         # 'trigger_rule': 'all_success'
     },
     description="A simple tutorial DAG",
-    schedule=""@daily"",
+    schedule="@daily",
     catchup=False,
     tags=["example"],
 ) as dag:
