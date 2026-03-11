@@ -1,4 +1,5 @@
 # from: https://airflow.apache.org/docs/apache-airflow/stable/tutorial/fundamentals.html
+
 import textwrap
 from datetime import datetime, timedelta
 
@@ -13,8 +14,9 @@ with DAG(
     # You can override them on a per-task basis during operator initialization
     default_args={
         "depends_on_past": False,
-        "retries": 1,
+        "retries": 5,
         "retry_delay": timedelta(minutes=5),
+        "start_date": datetime(2026, 1, 1),
         # 'queue': 'bash_queue',
         # 'pool': 'backfill',
         # 'priority_weight': 10,
@@ -29,8 +31,7 @@ with DAG(
         # 'trigger_rule': 'all_success'
     },
     description="A simple tutorial DAG",
-    schedule=timedelta(days=1),
-    start_date=datetime(2021, 1, 1),
+    schedule=""@daily"",
     catchup=False,
     tags=["example"],
 ) as dag:
