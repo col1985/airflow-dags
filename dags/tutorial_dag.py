@@ -48,6 +48,13 @@ with DAG(
         bash_command="sleep 5",
         retries=3,
     )
+
+    t3 = BashOperator(
+        task_id="hello",
+        depends_on_past=False,
+        bash_command="sleep 10 ; echo Hello from DAG",
+    )
+
     t1.doc_md = textwrap.dedent(
         """\
     #### Task Documentation
@@ -72,10 +79,10 @@ with DAG(
     """
     )
 
-    t3 = BashOperator(
+    t4 = BashOperator(
         task_id="templated",
         depends_on_past=False,
         bash_command=templated_command,
     )
 
-    t1 >> [t2, t3]
+    t1 >> [t2, t3, t4]
